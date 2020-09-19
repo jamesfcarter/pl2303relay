@@ -13,7 +13,7 @@ const pause = 500 * time.Millisecond
 // PL2303Relay represents a set of USB-connected relays.
 type PL2303Relay struct {
 	f io.ReadWriter
-	// Value is the last value successfully written to the LEDs,
+	// Value is the last value successfully written to the relays,
 	// or nil if no value has yet been written.
 	Value *byte
 }
@@ -35,7 +35,7 @@ func New(device string) (*PL2303Relay, error) {
 
 // Init initialises the relay board and returns the number of relays available.
 // This call can only be made once after the board gets power. If a second
-// calls made then 0 will be returned, and the relays will be in an undefined
+// call is made then 0 will be returned, and the relays will be in an undefined
 // state.
 func (p *PL2303Relay) Init() (count int, err error) {
 	_, err = p.f.Write([]byte{0x50})
