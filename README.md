@@ -1,2 +1,2 @@
 # pl2303relay
-A go driver for common USB-attached relay board
+A Go driver for common USB-attached relay boards.
